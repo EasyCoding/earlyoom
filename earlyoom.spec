@@ -40,13 +40,13 @@ sed -e '/systemctl/d' -i Makefile
 %config(noreplace) %{_sysconfdir}/default/%{name}
 
 %post
-%systemd_post earlyoom.service
+%systemd_post %{name}.service
 
 %preun
-%systemd_preun earlyoom.service
+%systemd_preun %{name}.service
 
 %postun
-%systemd_postun_with_restart earlyoom.service
+%systemd_postun_with_restart %{name}.service
 
 %changelog
 * Wed Aug 15 2018 Vitaly Zaitsev <vitaly@easycoding.org> - 1.1-1
