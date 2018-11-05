@@ -9,6 +9,7 @@ Source0: %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %{?systemd_requires}
 BuildRequires: systemd
+BuildRequires: pandoc
 BuildRequires: gcc
 
 %description
