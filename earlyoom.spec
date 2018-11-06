@@ -30,7 +30,7 @@ sed -e '/systemctl/d' -i Makefile
 %make_build
 
 %install
-%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
+%make_install PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
 %files
 %doc README.md
