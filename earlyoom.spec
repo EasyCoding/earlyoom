@@ -1,5 +1,5 @@
 Name: earlyoom
-Version: 1.3.1
+Version: 1.4
 Release: 1%{?dist}
 
 License: MIT
@@ -50,6 +50,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Mon Mar 02 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.4-1
+- Updated to version 1.4.
+
 * Fri Feb 28 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.3.1-1
 - Updated to version 1.3.1.
 
