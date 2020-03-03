@@ -1,3 +1,5 @@
+%global makeflags PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
+
 Name: earlyoom
 Version: 1.4
 Release: 1%{?dist}
@@ -30,10 +32,10 @@ sed -e '/systemctl/d' -i Makefile
 
 %build
 %set_build_flags
-%make_build VERSION=%{version}
+%make_build VERSION=%{version} %{makeflags}
 
 %install
-%make_install PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
+%make_install %{makeflags}
 
 %files
 %doc README.md
