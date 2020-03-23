@@ -9,6 +9,9 @@ URL: https://github.com/rfjakob/%{name}
 Summary: Early OOM Daemon for Linux
 Source0: %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
+# https://pagure.io/fedora-workstation/issue/119
+Patch0: %{name}-fedora-options.patch
+
 %{?systemd_requires}
 BuildRequires: systemd
 BuildRequires: pandoc
