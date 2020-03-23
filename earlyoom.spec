@@ -1,8 +1,8 @@
 %global makeflags PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
 Name: earlyoom
-Version: 1.4
-Release: 2%{?dist}
+Version: 1.5
+Release: 1%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -55,6 +55,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Mon Mar 23 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.5-1
+- Updated to version 1.5.
+
 * Tue Mar 03 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.4-2
 - Fixed RHBZ#1809407 and RHBZ#1809408.
 
