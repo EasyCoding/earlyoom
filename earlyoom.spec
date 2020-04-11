@@ -2,7 +2,7 @@
 
 Name: earlyoom
 Version: 1.5
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -16,6 +16,12 @@ Patch0: %{name}-fedora-options.patch
 BuildRequires: systemd
 BuildRequires: pandoc
 BuildRequires: gcc
+
+%if 0%{?fedora} && 0%{?fedora} >= 32
+# https://fedoraproject.org/wiki/Changes/EnableEarlyoom
+## Work around RHBZ#1814306
+Supplements: fedora-release-workstation
+%endif
 
 %description
 The oom-killer generally has a bad reputation among Linux users.
@@ -55,6 +61,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Fri Apr 10 2020 Neal Gompa <ngompa13@gmail.com> - 1.5-2
+- Add Supplements to fedora-release-workstation for F32+ to work around RHBZ#1814306
+
 * Mon Mar 23 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.5-1
 - Updated to version 1.5.
 
