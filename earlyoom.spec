@@ -1,8 +1,8 @@
 %global makeflags PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
 Name: earlyoom
-Version: 1.5
-Release: 2%{?dist}
+Version: 1.6
+Release: 1%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -61,6 +61,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Sat Apr 11 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.6-1
+- Updated to version 1.6.
+
 * Fri Apr 10 2020 Neal Gompa <ngompa13@gmail.com> - 1.5-2
 - Add Supplements to fedora-release-workstation for F32+ to work around RHBZ#1814306
 
