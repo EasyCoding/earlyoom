@@ -17,12 +17,6 @@ BuildRequires: systemd
 BuildRequires: pandoc
 BuildRequires: gcc
 
-%if 0%{?fedora} && 0%{?fedora} >= 32
-# https://fedoraproject.org/wiki/Changes/EnableEarlyoom
-## Work around RHBZ#1814306
-Supplements: fedora-release-workstation
-%endif
-
 %description
 The oom-killer generally has a bad reputation among Linux users.
 This may be part of the reason Linux invokes it only when it has
