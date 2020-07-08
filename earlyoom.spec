@@ -1,7 +1,7 @@
 %global makeflags PREFIX=%{_prefix} SYSCONFDIR=%{_sysconfdir} SYSTEMDUNITDIR=%{_unitdir}
 
 Name: earlyoom
-Version: 1.6
+Version: 1.6.1
 Release: 1%{?dist}
 
 License: MIT
@@ -55,6 +55,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Wed Jul 08 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.6.1-1
+- Updated to version 1.6.1.
+
 * Sat Apr 11 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.6-1
 - Updated to version 1.6.
 
