@@ -16,6 +16,7 @@ Patch0: %{name}-fedora-options.patch
 BuildRequires: systemd
 BuildRequires: pandoc
 BuildRequires: gcc
+BuildRequires: make
 
 %description
 The oom-killer generally has a bad reputation among Linux users.
