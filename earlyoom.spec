@@ -2,7 +2,7 @@
 
 Name: earlyoom
 Version: 1.6.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -56,6 +56,9 @@ sed -e '/systemctl/d' -i Makefile
 %systemd_postun_with_restart %{name}.service
 
 %changelog
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Thu Oct 15 2020 Vitaly Zaitsev <vitaly@easycoding.org> - 1.6.2-1
 - Updated to version 1.6.2.
 
