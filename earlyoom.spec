@@ -2,7 +2,7 @@
 
 Name: earlyoom
 Version: 1.6.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -19,13 +19,12 @@ BuildRequires: gcc
 BuildRequires: make
 
 %description
-The oom-killer generally has a bad reputation among Linux users.
-This may be part of the reason Linux invokes it only when it has
-absolutely no other choice. It will swap out the desktop
-environment, drop the whole page cache and empty every buffer
-before it will ultimately kill a process. At least that's what
-I think what it will do. I have yet to be patient enough to wait
-for it, sitting in front of an unresponsive system.
+User-space OOM killer daemon that can avoid the system going into the
+unresponsive state. It checks the amount of available memory and
+free swap up to 10 times a second (less often if there is a lot of free
+memory) and kills the largest processes with the highest oom_score.
+
+Percentages are configured through the configuration file.
 
 %prep
 %autosetup -p1
@@ -38,13 +37,12 @@ sed -e '/systemctl/d' -i Makefile
 %install
 %make_install %{makeflags}
 
-%files
-%doc README.md
-%license LICENSE
-%{_bindir}/%{name}
-%{_unitdir}/%{name}.service
-%{_mandir}/man1/%{name}.*
-%config(noreplace) %{_sysconfdir}/default/%{name}
+%if 0%{?fedora} && 0%{?fedora} >= 34
+%triggerun -- %{name} < 1.6.2-3
+# earlyoom preset is removed from fedora-release in F34,
+# trigger resetting the service state on upgrade
+systemctl --no-reload preset %{name}.service &>/dev/null || :
+%endif
 
 %post
 %systemd_post %{name}.service
@@ -55,7 +53,18 @@ sed -e '/systemctl/d' -i Makefile
 %postun
 %systemd_postun_with_restart %{name}.service
 
+%files
+%doc README.md
+%license LICENSE
+%{_bindir}/%{name}
+%{_unitdir}/%{name}.service
+%{_mandir}/man1/%{name}.*
+%config(noreplace) %{_sysconfdir}/default/%{name}
+
 %changelog
+* Tue Feb 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.6.2-3
+- Trigger resetting the service state, since we're removing the preset in F34
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 

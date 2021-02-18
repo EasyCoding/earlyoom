@@ -1,4 +1,4 @@
-From f977c411ee015c7d6419b5ba73f69cff655416c7 Mon Sep 17 00:00:00 2001
+From e192c1a484834e63184c2246c9d5c66e3d4911f5 Mon Sep 17 00:00:00 2001
 From: Vitaly Zaitsev <vitaly@easycoding.org>
 Date: Mon, 23 Mar 2020 11:27:29 +0100
 Subject: [PATCH] Use Fedora launch options.
@@ -10,7 +10,7 @@ https://pagure.io/fedora-workstation/issue/119.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/earlyoom.default b/earlyoom.default
-index fa8b9cc..341a643 100644
+index fa8b9cc..0ffb8d2 100644
 --- a/earlyoom.default
 +++ b/earlyoom.default
 @@ -2,7 +2,7 @@
@@ -18,10 +18,10 @@ index fa8b9cc..341a643 100644
  
  # Options to pass to earlyoom
 -EARLYOOM_ARGS="-r 3600"
-+EARLYOOM_ARGS="-r 0 -m 4 -M 409600 --prefer '^Web Content$' --avoid '^(dnf|packagekitd|gnome-shell|gnome-session-c|gnome-session-b|lightdm|sddm|sddm-helper|gdm|gdm-wayland-ses|gdm-session-wor|gdm-x-session|Xorg|Xwayland|systemd|systemd-logind|dbus-daemon|dbus-broker|cinnamon|cinnamon-sessio|kwin_x11|kwin_wayland|plasmashell|ksmserver|plasma_session|startplasma-way|xfce4-session|mate-session|marco|lxqt-session|openbox)$'"
++EARLYOOM_ARGS="-r 0 -m 4 -M 409600 --prefer '^Web Content$' --avoid '^(dnf|packagekitd|gnome-shell|gnome-session-c|gnome-session-b|lightdm|sddm|sddm-helper|gdm|gdm-wayland-ses|gdm-session-wor|gdm-x-session|Xorg|Xwayland|systemd|systemd-logind|dbus-daemon|dbus-broker|cinnamon|cinnamon-sessio|kwin_x11|kwin_wayland|plasmashell|ksmserver|plasma_session|startplasma-way|xfce4-session|mate-session|marco|lxqt-session|openbox|cryptsetup)$'"
  
  # Examples:
  
 -- 
-2.25.1
+2.29.2
 
