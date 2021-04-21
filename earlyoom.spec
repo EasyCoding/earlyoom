@@ -2,7 +2,7 @@
 
 Name: earlyoom
 Version: 1.6.2
-Release: 3%{?dist}
+Release: 4%{?dist}
 
 License: MIT
 URL: https://github.com/rfjakob/%{name}
@@ -62,6 +62,10 @@ systemctl --no-reload preset %{name}.service &>/dev/null || :
 %config(noreplace) %{_sysconfdir}/default/%{name}
 
 %changelog
+* Tue Mar 02 2021 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1.6.2-4
+- Rebuilt for updated systemd-rpm-macros
+  See https://pagure.io/fesco/issue/2583.
+
 * Tue Feb 16 2021 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.6.2-3
 - Trigger resetting the service state, since we're removing the preset in F34
 
